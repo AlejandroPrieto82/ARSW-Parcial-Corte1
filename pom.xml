@@ -6,13 +6,13 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.5.6</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>eci.edu.arsw</groupId>
 	<artifactId>parcial</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>parcial</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Prueba de necesito mejorar como programador y estudiante</description>
 	<url/>
 	<licenses>
 		<license/>

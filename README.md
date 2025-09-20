@@ -21,4 +21,26 @@
 
 **NOTA 2:** Podriamos igualmente, hacer un front, que transforme con los datos obtenidos el mismo los datos en el link, la diferencia es que seria abrir un cuadro de texto, para que manualmente este ponga su _APIkey_ y  realice las busquedas que quiera, esto para no gastar recursos en tener un API de peticiones funcionando, y asi, dejar un cliente grueso, el cual funcione para realizar todo esto, y la empresa solo tenga el front en un cloudFront y un S3 conectados, para no gastar tantos recursos.   
 
-**NOTA 3:** La unica documentacion que tengo, la puse en el codigo, no la tengo en esto, ya que la verdad, es poco y no creo que este bien, igualmente **Pido perdon no ser capaz de resolver esto actualmente, me comprometo a mejoraren el segundo corte**
+**NOTA 3:** La unica documentacion que tengo, la puse en el codigo, no la tengo en esto, ya que la verdad, es poco y no creo que este bien, igualmente ***Pido perdon no ser capaz de resolver esto actualmente, me comprometo a mejoraren el segundo corte***
+
+
+
+### CREO QUE FUNCIONA
+Si usted va con el link:
+[Link](http://localhost:8080/peticiones/crear/1/TIME_SERIES_INTRADAY/IBM/15/true/true/2025/03/full/json), le va a retornar esto:  
+![Retorno](image.png)  
+**Respuesta**  
+
+**Peticiones:** Para hacer peticiones debe ir al link:
+`http://localhost:8080/peticiones/crear/{usuarioID}/{function}/{symbol}/{interval}/{adjusted}/{extendedHours}/{year}/{month}/{outputSize}/{dataType}`  
+Donde:
+- Usuario ID es **Integer**
+- function es **las funciones de la api** temporalmente es TIME_SERIES_INTRADAY
+- symbol es **La empresa permitida** temporalmente es IBM
+- interval es un **Integer** que va en minutos, la cantidad de minutos de los intervalos
+- adjusted es un **booleano**
+- extendedHours es un **booleano**
+- year es un **Integer** el año que quiere
+- month es un **Integer** el mes que quiere
+- outputSize es un **tipo de salida** es compact o full
+- dataType es un **Tipo de salida de datos** es json o csv

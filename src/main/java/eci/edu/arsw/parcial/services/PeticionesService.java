@@ -1,7 +1,5 @@
 package eci.edu.arsw.parcial.services;
 
-import java.util.Date;
-
 import org.springframework.stereotype.Service;
 
 import eci.edu.arsw.parcial.model.Respuesta;
@@ -16,15 +14,16 @@ public class PeticionesService {
     
     //ACA SE ARMA LA PETICION
     //**ACA HAY MUCHOS IF'S PORQUE COMO COSAS PUEDENSER NULL, NO HAY PROBLEMA, SE VALIDA Y VERIFICA PARA ARMARLO**
-    public Respuesta getLink (Integer usuarioID ,TypeFunction function, TypeSimbol symbol, Integer interval, String apiKey, Boolean adjusted, Boolean extendedHours, Date month, TypeOutputSize outputSize, TypeDataType dataType){
+    public Respuesta getLink (Integer usuarioID ,TypeFunction function, TypeSimbol symbol, Integer interval, Boolean adjusted, Boolean extendedHours, Integer month, Integer year, TypeOutputSize outputSize, TypeDataType dataType) {
         String link = "https://www.alphavantage.co/query?";
         link = link + "function="+function.toString() +"&";
         link = link + "symbol="+symbol+"&";
 
+
         if(interval <= 0){
             link = link + "interval=60min&";
         }else{
-            link = link + "interval="+interval+"min&";
+            link = link + "interval="+Integer.toString(interval) +"min&";
         }
 
         if(adjusted){
@@ -34,7 +33,7 @@ public class PeticionesService {
             link = link + "extended_hours=true&";
         }
         if(month != null){
-            link = link + "month="+ Integer.toString(month.getYear())+"-"+Integer.toString(month.getMonth())+"&";
+            link = link + "month="+ Integer.toString(year)+"-"+Integer.toString(month)+"&";
         }
         if(outputSize != null){
             link = link + "outputsize="+outputSize.toString()+"&";

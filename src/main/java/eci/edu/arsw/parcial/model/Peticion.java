@@ -16,7 +16,7 @@ public class Peticion {
     //Estas son las cosas obligatorias para hacer la peticion
     private String function;
     private String symbol;
-    private String interval;
+    private Integer interval;
     private String apiKey;
 
 

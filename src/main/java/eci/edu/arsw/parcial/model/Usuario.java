@@ -7,6 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
+//PARA EL USUARIO
 public class Usuario {
 
     private Integer id;
@@ -14,5 +15,6 @@ public class Usuario {
     private String nombre;
     private String correo;
     private String APIkey;
+    private String password;
 
 }

@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.springframework.stereotype.Service;
 
+import eci.edu.arsw.parcial.model.Respuesta;
 import eci.edu.arsw.parcial.model.Usuario;
 import eci.edu.arsw.parcial.model.types.TypeDataType;
 import eci.edu.arsw.parcial.model.types.TypeFunction;
@@ -13,12 +14,13 @@ import eci.edu.arsw.parcial.model.types.TypeSimbol;
 @Service
 public class PeticionesService {
     
-    //Aca es donde se arma la peticion
-    public void sendPeticion (Usuario usuario ,TypeFunction function, TypeSimbol symbol, Integer interval, String apiKey, Boolean adjusted, Boolean extendedHours, Date month, TypeOutputSize outputSize, TypeDataType dataType) throws PeticionException{
-        
+    //ACA SE ARMA LA PETICION
+    //**ACA HAY MUCHOS IF'S PORQUE COMO COSAS PUEDENSER NULL, NO HAY PROBLEMA, SE VALIDA Y VERIFICA PARA ARMARLO**
+    public Respuesta getLink (Integer usuarioID ,TypeFunction function, TypeSimbol symbol, Integer interval, String apiKey, Boolean adjusted, Boolean extendedHours, Date month, TypeOutputSize outputSize, TypeDataType dataType){
         String link = "https://www.alphavantage.co/query?";
         link = link + "function="+function.toString() +"&";
         link = link + "symbol="+symbol+"&";
+
         if(interval <= 0){
             link = link + "interval=60min&";
         }else{
@@ -38,8 +40,10 @@ public class PeticionesService {
             link = link + "outputsize="+outputSize.toString()+"&";
         }
         link = link + "datatype=json&apikey="; //Esto por si en algun momento el default deja de ser Json lo "obligo" a ser "Json"
+        Usuario usuario = new Usuario(1, "Demo", "demo@nosequemepaso.com", "demo","password"); //Aca obtengo usuario buscandolo por el id, en este caso solo lo creo para ejercicio
         link = link + usuario.getAPIkey(); //Aca uno el apiKey del usuario con el link
-
+        Respuesta res = new Respuesta(link);
+        return res;
     }
 
 }
